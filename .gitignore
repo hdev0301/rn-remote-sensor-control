@@ -1,47 +1,54 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+# App ignores
+#
+config.local.js
+*.keystore
 
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
-
-# =========================
-# Operating System Files
-# =========================
+# VSCode ignores
+#
+.vscode/
 
 # OSX
-# =========================
-
+#
 .DS_Store
-.AppleDouble
-.LSOverride
 
-# Thumbnails
-._*
+# Android
+android/app/src/main/assets/index.android.bundle
+android/app/src/main/assets/index.android.bundle.meta
 
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
 
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
+# Android/IntelliJ
+#
+*.iml
+.idea
+.gradle
+local.properties
+
+# node.js
+#
+node_modules/
+npm-debug.log
+yarn.lock
+
+# BUCK
+buck-out/
+\.buckd/
+android/app/libs

@@ -1,0 +1,120 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.telldus.live.mobile.test">
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <permission
+        android:name="com.telldus.live.mobile.test.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.telldus.live.mobile.test.permission.C2D_MESSAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	  <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="24" />
+
+    <application
+      android:name=".MainApplication"
+      android:allowBackup="true"
+      android:label="@string/app_name"
+      android:icon="@mipmap/ic_launcher"
+      android:theme="@style/AppTheme">
+
+        <activity
+          android:name=".MainActivity"
+          android:label="@string/app_name"
+      		android:launchMode="singleTop"
+      		android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation">
+
+            <intent-filter>
+              <action android:name="android.intent.action.MAIN" />
+              <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <receiver
+        android:name=".ConfigurableDeviceWidget"
+        android:label="Device">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+            android:name="android.appwidget.provider"
+            android:resource="@xml/configurable_device_widget_info" />
+        </receiver>
+
+        <!--<receiver-->
+            <!--android:name=".ConfigurableDeviceWidgetReceiver"-->
+            <!--android:label="Device">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.appwidget.action.TOGGLE_ICON"></action>-->
+            <!--</intent-filter>-->
+
+            <!--<meta-data-->
+                <!--android:name="android.appwidget.provider"-->
+                <!--android:resource="@xml/configurable_device_widget_info" />-->
+        <!--</receiver>-->
+
+        <receiver
+            android:name=".ConfigurableSensorWidget"
+            android:label="Sensor">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/configurable_sensor_widget_info" />
+        </receiver>
+
+        <activity android:name=".ConfigurableDeviceWidgetConfigureActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ConfigurableSensorWidgetConfigureActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+      <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+        <receiver
+          android:name="com.google.android.gms.gcm.GcmReceiver"
+          android:exported="true"
+          android:permission="com.google.android.c2dm.permission.SEND" >
+          <intent-filter>
+              <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+              <category android:name="com.telldus.live.mobile.test" />
+          </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationPublisher" />
+        <receiver android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationBootEventReceiver">
+          <intent-filter>
+              <action android:name="android.intent.action.BOOT_COMPLETED" />
+          </intent-filter>
+        </receiver>
+        <service android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationRegistrationService"/>
+        <service
+          android:name="com.dieam.reactnativepushnotification.modules.RNPushNotificationListenerService"
+          android:exported="false" >
+          <intent-filter>
+              <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+          </intent-filter>
+        </service>
+        <meta-data
+          android:name="io.fabric.ApiKey"
+          android:value="6ddcb9201beba571821a466b7b634103262d6903"
+        />
+    </application>
+
+</manifest>
